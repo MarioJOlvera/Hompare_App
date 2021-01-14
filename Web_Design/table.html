@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Set</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <!-- Leaflet's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+
+    <!-- Javascript -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Bootstrap CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <div class="card bg-light border-dark table" style="width: 100%;">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="Select1">Select state</label>
+                                <select class="form-control" id="State">
+                                    <option value="Ciudad de México">Ciudad de México</option>
+                                    <option value="México">México</option>
+                                    <option value="Hidalgo">Hidalgo</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Tlaxcala"> Tlaxcala</option>
+                                    <option value="Morelos"> Morelos</option>
+                                </select>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                                <label for="Select2">Select Municipality</label>
+                                <select class="form-control" id="Municipality"></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col text-center">
+                        <button id="button" class="btn btn-primary btn-sm" type="submit" style="padding: 2px;"> Filter table</button>
+                        <button id="buttonClear" class="btn btn-primary btn-sm" style="padding: 2px;"> Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <table class="table table-striped table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Baños</th>
+                            <th scope="col">Ciudad</th>
+                            <th scope="col">Código Estado</th>
+                            <th scope="col">Colonia</th>
+                            <th scope="col">Estacionamientos</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Municipio</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Recámaras</th>
+                            <th scope="col">Superficie Construida</th>
+                            <th scope="col">Superficie total</th>
+                            <th scope="col">Tipo de asentamiento</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableContent"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script src="static/js/logic.js"></script>
+</body>
+</html>

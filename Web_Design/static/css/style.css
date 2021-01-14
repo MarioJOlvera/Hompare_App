@@ -1,0 +1,53 @@
+body {
+    margin-bottom: 100px;
+    clear: both;
+    background-color: beige;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#infoComp{
+    background-color: #db7c26;
+    color: white;
+    height: 380px;
+    padding: 5px;
+}
+
+hr.compLine {
+    border-top:1px dotted black; 
+}
+
+h2.Comparisson {
+    padding: 30px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card.sticky-top {
+    top: 56px;
+}
+
+#button{
+    margin: auto;
+    padding: 5px;
+}
+#buttonClear{
+    margin: auto;
+    padding: 5px;
+}
+.fas{
+    font-size: 65px;
+    padding: 4px;
+}
+.card.table{
+    padding: 0.5em;
+}
+hr.lineComp{
+    border-top:1px dotted white;
+}
+
+@media screen and (max-width: 760px) {
+    #infoComp{
+        font-size: 14px;
+        height: 460px;
+    }
+}

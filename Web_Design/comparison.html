@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real State</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <!-- Leaflet's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+
+    <!-- Javascript -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Bootstrap CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container-fluid " id="infoComp">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3 style="padding: 5px;">About</h3>
+                <hr class="lineComp">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 text-center">
+                <p class="description">In this section, it is possible to make comparisons<br> between states and municipalities. Detailed data,
+                    that was considered<br> important to people when buying a home, is displayed. Besides price, <br>it was decided to show some of the most common indicators that may influence people´s decisions when they are searching for a house. </p>
+                    <i class="fas fa-balance-scale"></i>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <p class="text-center description" >Below you can find: <br>
+                <ul>
+                    <li>
+                    Average price
+                    </li>
+                    <li>
+                        Properties offered
+                    </li>
+                    <li>
+                        Average total surface price per square meter
+                    </li>
+                    <li>
+                        Average built surface price per square meter
+                    </li>
+                    <li>
+                        The average number of bedrooms
+                    </li>
+                    <li>
+                        Health, education, income and Human Development indicators
+                    </li>
+                </ul>
+                
+            </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h2 class="Comparisson">Compare states and municipalities</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card bg-light border-dark sticky-top" style="width: 100%;">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="Select1">Select state</label>
+                                <select class="form-control" id="State1">
+                                    <option value="Ciudad de México">Ciudad de México</option>
+                                    <option value="México"> México</option>
+                                    <option value="Hidalgo">Hidalgo</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Tlaxcala"> Tlaxcala</option>
+                                    <option value="Morelos"> Morelos</option>
+                                </select>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                                <label for="Select2">Municipality</label>
+                                <select class="form-control" id="Municipality1"></select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge2L"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge3L"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div class="col-md-6" col-sm-12">
+                                <div id="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card bg-light border-dark sticky-top" style="width: 100%;">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="Select1">Select state</label>
+                                <select class="form-control" id="State2">
+                                    <option value="Ciudad de México">Ciudad de México</option>
+                                    <option value="México"> México</option>
+                                    <option value="Hidalgo">Hidalgo</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Tlaxcala"> Tlaxcala</option>
+                                    <option value="Morelos"> Morelos</option>
+                                </select>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                                <label for="Select2">Municipality </label>
+                                <select class="form-control" id="Municipality2"></select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge1R"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge2R"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div id="gauge3R"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compLine">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-6 col-sm-12" class="text-center">
+                            <div class="col-md-6" col-sm-12">
+                                <div id="bar2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="static/js/app.js"></script>
+</body>
+
+</html>
